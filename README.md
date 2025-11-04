@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💰 InnoFinances
 
-## Getting Started
+> Projeto desenvolvido como parte de um desafio técnico da **InnoDev**.
 
-First, run the development server:
+O InnoFinances é um dashboard financeiro interativo que permite visualizar e analisar dados de transações — incluindo saldos, balanços, receitas e despesas — de forma intuitiva e organizada.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+O sistema conta com duas telas principais:
+
+- 🔐 **Login**: autenticação com validação de credenciais.
+- 📊 **Dashboard**: rota protegida onde são exibidos os gráficos e relatórios financeiros.
+
+## 🚀 Tecnologias Utilizadas
+
+O projeto foi desenvolvido com as seguintes tecnologias:
+
+- ⚡ Next.js 16
+- 🎨 Tailwind CSS
+- 🧩 shadcn/ui
+- 📚 TanStack Query
+- 🧠 TypeScript
+
+## ⚙️ Instalação
+
+Clone o repositório e instale as dependências com:
+
+```ts
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Configuração do Ambiente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Antes de executar o projeto, crie um arquivo .env.local na raiz e defina as seguintes variáveis:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+JWT_SECRET=chave_encriptada
+EMAIL=seu_email@exemplo.com
+PASSWORD=sua_senha
+NODE_ENV=development
+```
 
-## Learn More
+> 💡 Dica: você pode gerar um hash para o **JWT_SECRET** em sites como em: [178.github.io/online-tools/sha256.html](https://emn178.github.io/online-tools/sha256.html).
 
-To learn more about Next.js, take a look at the following resources:
+Em seguida, faça o download do arquivo `transactions.json` neste [link](https://drive.google.com/file/d/1W6AKvWNyZTQFV7P4mTGegge5yR0RL4qd/view?pli=1) e salve-o na pasta:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+/data/transactions.json
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> Caso a pasta `data` não exista, crie-a na raiz do projeto.
 
-## Deploy on Vercel
+## ▶️ Execução
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para rodar o projeto em ambiente de desenvolvimento:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+pnpm run dev
+```
+
+O servidor será iniciado em http://localhost:3000.
+
+# 📜 Licença
+
+Este projeto foi desenvolvido exclusivamente para fins de avaliação técnica.
