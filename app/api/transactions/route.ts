@@ -1,19 +1,12 @@
 // app/api/transactions/route.ts
-import path from "path";
-import fs from "fs/promises";
 import { Transaction } from "@/types/transaction";
 import { Filters } from "@/types/filters";
 import { NextResponse } from "next/server";
-
-async function loadTransactions(): Promise<Transaction[]> {
-  const pathTransactions = path.join(
-    process.cwd(),
-    "data",
-    "transactions.json"
-  );
-  const rawTransactions = await fs.readFile(pathTransactions, "utf-8");
-  return JSON.parse(rawTransactions);
-}
+import { loadTransactions } from "@/utils/loadTransactions";
+import {
+  addMonthsToYearMonth,
+  monthKeyFromTimestamp,
+} from "@/utils/helperDate";
 
 function applyFilters(data: Transaction[], filters: Filters) {
   return data.filter((transaction) => {
@@ -104,24 +97,6 @@ function summarize(transactions: Transaction[]) {
     industryArray,
     accountArray,
   };
-}
-
-function monthKeyFromTimestamp(ts: number) {
-  const d = new Date(ts);
-  const year = d.getUTCFullYear();
-  const month = d.getUTCMonth() + 1;
-  return `${year}-${String(month).padStart(2, "0")}`;
-}
-
-function addMonthsToYearMonth(
-  year: number,
-  monthOneBased: number,
-  add: number
-) {
-  const totalMonths = year * 12 + (monthOneBased - 1) + add;
-  const newYear = Math.floor(totalMonths / 12);
-  const newMonth = (totalMonths % 12) + 1;
-  return { year: newYear, month: newMonth };
 }
 
 export async function POST(request: Request) {
