@@ -4,4 +4,7 @@ module.exports = {
   roots: ["<rootDir>/app"],
   clearMocks: true,
   resetModules: true,
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/$1",
+  },
 };
